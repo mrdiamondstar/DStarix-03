@@ -35,7 +35,7 @@ export default function BlogArticlePage({ params }: { params: { slug: string } }
   return (
     <>
       {/* Hero */}
-      <section className="section-dark relative overflow-hidden pb-16 pt-36 sm:pt-40">
+      <section className="section-dark relative overflow-hidden pb-12 pt-36 sm:pt-40">
         <div aria-hidden className="pointer-events-none absolute inset-0">
           <div className="absolute inset-0 bg-grid-dark bg-[size:60px_60px] [mask-image:radial-gradient(80%_60%_at_50%_0%,#000,transparent_75%)]" />
           <div className="animate-float-slow absolute -left-20 top-10 h-96 w-96 rounded-full bg-electric/20 blur-[130px]" />
@@ -67,7 +67,7 @@ export default function BlogArticlePage({ params }: { params: { slug: string } }
       </section>
 
       {/* Cover image */}
-      <div className="relative -mt-4">
+      <div className="relative mt-10 sm:mt-12">
         <div className="container">
           <Reveal className="mx-auto max-w-4xl">
             <div className="relative aspect-[16/8] overflow-hidden rounded-3xl border border-ink-900/[0.07] bg-ink-900 shadow-card">
