@@ -1,56 +1,34 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Activity, TrendingUp, Zap, ArrowUpRight } from "lucide-react";
+import { Activity, TrendingUp, Zap, ArrowUpRight, CheckCircle2, Search } from "lucide-react";
 
 /**
  * Agent performance panel.
  *
- * Upgraded from flat bars to a layered analytics surface: gradient area chart +
- * smoothed trend line + gridlines + hover-less "now" marker, plus per-metric
- * delta chips and their own micro-sparklines.
+ * Header + delta metric tiles, followed by a live agent activity stream —
+ * a compact, meaningful read of what the agent is doing right now rather
+ * than an abstract throughput line.
  */
-
-// Normalised series (0–1). Slight noise keeps it believable, not synthetic-looking.
-const SERIES = [0.28, 0.34, 0.31, 0.46, 0.42, 0.55, 0.5, 0.63, 0.59, 0.72, 0.68, 0.81, 0.78, 0.89, 0.94];
-
-const W = 320;
-const H = 108;
-const PAD_T = 10;
-const PAD_B = 6;
-
-const pts = SERIES.map((v, i) => ({
-  x: (i / (SERIES.length - 1)) * W,
-  y: PAD_T + (1 - v) * (H - PAD_T - PAD_B),
-}));
-
-/** Catmull-Rom → cubic Bézier: gives the smooth, expensive-looking curve. */
-function smoothPath(p: { x: number; y: number }[]) {
-  if (p.length < 2) return "";
-  let d = `M ${p[0].x} ${p[0].y}`;
-  for (let i = 0; i < p.length - 1; i++) {
-    const p0 = p[i - 1] ?? p[i];
-    const p1 = p[i];
-    const p2 = p[i + 1];
-    const p3 = p[i + 2] ?? p2;
-    const c1x = p1.x + (p2.x - p0.x) / 6;
-    const c1y = p1.y + (p2.y - p0.y) / 6;
-    const c2x = p2.x - (p3.x - p1.x) / 6;
-    const c2y = p2.y - (p3.y - p1.y) / 6;
-    d += ` C ${c1x} ${c1y}, ${c2x} ${c2y}, ${p2.x} ${p2.y}`;
-  }
-  return d;
-}
-
-const LINE = smoothPath(pts);
-const AREA = `${LINE} L ${W} ${H} L 0 ${H} Z`;
-const LAST = pts[pts.length - 1];
 
 const METRICS = [
   { icon: Activity, label: "Resolution", value: "68%", delta: "+4.2" },
   { icon: Zap, label: "p95 latency", value: "740ms", delta: "-12%", good: true },
   { icon: TrendingUp, label: "CSAT", value: "+19", delta: "+2.1" },
 ];
+
+const ACTIVITY = [
+  { icon: CheckCircle2, tone: "emerald", action: "Resolved", detail: "Billing inquiry", time: "0.8s" },
+  { icon: Search, tone: "electric", action: "Retrieved", detail: "4 knowledge docs", time: "now" },
+  { icon: ArrowUpRight, tone: "amber", action: "Escalated", detail: "Complex refund → human", time: "1.2s" },
+  { icon: Zap, tone: "emerald", action: "Automated", detail: "Order status update", time: "0.6s" },
+];
+
+const TONE: Record<string, { icon: string; dot: string }> = {
+  emerald: { icon: "text-emerald-300 bg-emerald-400/10", dot: "bg-emerald-400" },
+  electric: { icon: "text-electric-400 bg-electric-400/10", dot: "bg-electric-400" },
+  amber: { icon: "text-amber-300 bg-amber-400/10", dot: "bg-amber-400" },
+};
 
 export function DashboardMock({ className }: { className?: string }) {
   return (
@@ -119,109 +97,50 @@ export function DashboardMock({ className }: { className?: string }) {
         })}
       </div>
 
-      {/* ---- Main area chart ---- */}
+      {/* ---- Live activity stream ---- */}
       <div className="relative mt-5">
-        <div className="mb-2 flex items-center justify-between">
+        <div className="mb-1 flex items-center justify-between">
           <p className="text-[10px] font-medium uppercase tracking-wider text-white/40">
-            Throughput · 24h
+            Live activity
           </p>
           <span className="flex items-center gap-1.5 text-[10px] text-white/40">
-            <span className="h-1.5 w-1.5 rounded-full bg-violet" />
-            requests/min
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-electric-400 opacity-75" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-electric-400" />
+            </span>
+            streaming
           </span>
         </div>
 
-        <svg
-          viewBox={`0 0 ${W} ${H}`}
-          className="h-28 w-full overflow-visible"
-          preserveAspectRatio="none"
-        >
-          <defs>
-            <linearGradient id="dm-area" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stopColor="#3b82f6" stopOpacity="0.42" />
-              <stop offset="0.55" stopColor="#2563eb" stopOpacity="0.16" />
-              <stop offset="1" stopColor="#3b82f6" stopOpacity="0" />
-            </linearGradient>
-            <linearGradient id="dm-line" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0" stopColor="#60a5fa" />
-              <stop offset="0.6" stopColor="#3b82f6" />
-              <stop offset="1" stopColor="#2563eb" />
-            </linearGradient>
-            <clipPath id="dm-clip">
-              <motion.rect
-                x="0"
-                y="-20"
-                height={H + 40}
-                initial={{ width: 0 }}
-                whileInView={{ width: W }}
+        <div className="rounded-xl border border-white/10 bg-white/[0.03]">
+          {ACTIVITY.map((a, i) => {
+            const tone = TONE[a.tone];
+            return (
+              <motion.div
+                key={a.detail}
+                initial={{ opacity: 0, x: -8 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-              />
-            </clipPath>
-          </defs>
-
-          {/* Gridlines */}
-          {[0.25, 0.5, 0.75].map((g) => (
-            <line
-              key={g}
-              x1="0"
-              x2={W}
-              y1={PAD_T + g * (H - PAD_T - PAD_B)}
-              y2={PAD_T + g * (H - PAD_T - PAD_B)}
-              stroke="rgba(255,255,255,0.05)"
-              strokeWidth="1"
-              strokeDasharray="3 5"
-              vectorEffect="non-scaling-stroke"
-            />
-          ))}
-
-          <g clipPath="url(#dm-clip)">
-            <path d={AREA} fill="url(#dm-area)" />
-            <path
-              d={LINE}
-              fill="none"
-              stroke="url(#dm-line)"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              vectorEffect="non-scaling-stroke"
-            />
-          </g>
-
-          {/* "Now" marker */}
-          <motion.g
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 1.4, duration: 0.4 }}
-          >
-            <line
-              x1={LAST.x}
-              x2={LAST.x}
-              y1={LAST.y}
-              y2={H}
-              stroke="rgba(255,255,255,0.18)"
-              strokeWidth="1"
-              strokeDasharray="2 3"
-              vectorEffect="non-scaling-stroke"
-            />
-            <circle cx={LAST.x} cy={LAST.y} r="7" fill="#3b82f6" opacity="0.18" />
-            <circle
-              cx={LAST.x}
-              cy={LAST.y}
-              r="3.2"
-              fill="#fff"
-              stroke="#3b82f6"
-              strokeWidth="1.5"
-              vectorEffect="non-scaling-stroke"
-            />
-          </motion.g>
-        </svg>
-
-        <div className="mt-2 flex justify-between font-mono text-[10px] text-white/35">
-          <span>00:00</span>
-          <span>12:00</span>
-          <span className="text-white/60">now</span>
+                transition={{ delay: 0.35 + i * 0.12, duration: 0.45 }}
+                className={`flex items-center gap-3 px-3 py-2.5 ${
+                  i > 0 ? "border-t border-white/[0.06]" : ""
+                }`}
+              >
+                <span className={`grid h-6 w-6 shrink-0 place-items-center rounded-lg ${tone.icon}`}>
+                  <a.icon className="h-3.5 w-3.5" />
+                </span>
+                <div className="min-w-0 flex-1">
+                  <p className="truncate text-xs leading-tight">
+                    <span className="font-medium">{a.action}</span>
+                    <span className="text-white/45"> · {a.detail}</span>
+                  </p>
+                </div>
+                <span className="shrink-0 font-mono text-[10px] tabular-nums text-white/40">
+                  {a.time}
+                </span>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </div>
