@@ -19,7 +19,7 @@ export function Logo({ className, dark = false }: { className?: string; dark?: b
       className={cn("group inline-flex items-center gap-2.5 leading-none", className)}
     >
       {/* Brand "D" mark — matches the site favicon */}
-      <span className="relative grid h-10 w-10 shrink-0 place-items-center overflow-hidden rounded-xl shadow-glow ring-1 ring-white/10 transition-transform duration-500 group-hover:scale-105">
+      <span className="relative grid h-8 w-8 shrink-0 place-items-center overflow-hidden rounded-lg shadow-glow ring-1 ring-white/10 transition-transform duration-500 group-hover:scale-105">
         <svg viewBox="0 0 32 32" className="h-full w-full" aria-hidden>
           <defs>
             <linearGradient id="dstarix-d-grad" x1="0" y1="0" x2="1" y2="1">
