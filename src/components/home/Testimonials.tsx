@@ -41,10 +41,23 @@ export function Testimonials() {
                 “{t.quote}”
               </p>
               <footer className="mt-8">
-                <div className="mx-auto h-12 w-12 rounded-full bg-accent-gradient" />
-                <div className="mt-3 text-sm font-medium text-white/70">
-                  {t.role}, {t.company}
+                <div className="mx-auto grid h-12 w-12 place-items-center overflow-hidden rounded-full bg-white ring-1 ring-white/15">
+                  <svg viewBox="0 0 32 32" className="h-8 w-8" aria-hidden>
+                    <defs>
+                      <linearGradient id="t-d-grad" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0" stopColor="#17b6d4" />
+                        <stop offset="0.5" stopColor="#1f6fc4" />
+                        <stop offset="1" stopColor="#173f86" />
+                      </linearGradient>
+                    </defs>
+                    <path
+                      fill="url(#t-d-grad)"
+                      fillRule="evenodd"
+                      d="M8 6H16.5A10 10 0 0 1 16.5 26H8ZM12.5 10.5H15.5A5.5 5.5 0 0 1 15.5 21.5H12.5Z"
+                    />
+                  </svg>
                 </div>
+                <div className="mt-3 text-sm font-medium text-white/70">{t.role}</div>
               </footer>
             </motion.blockquote>
           </AnimatePresence>
