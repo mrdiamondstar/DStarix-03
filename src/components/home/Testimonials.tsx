@@ -57,7 +57,9 @@ export function Testimonials() {
                     />
                   </svg>
                 </div>
-                <div className="mt-3 text-sm font-medium text-white/70">{t.role}</div>
+                <div className="mt-3 text-sm font-medium text-white/70">
+                  {t.company ? `${t.role}, ${t.company}` : t.role}
+                </div>
               </footer>
             </motion.blockquote>
           </AnimatePresence>

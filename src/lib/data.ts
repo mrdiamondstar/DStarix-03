@@ -638,13 +638,14 @@ export const caseStudies: CaseStudy[] = [
 export interface Testimonial {
   quote: string;
   role: string;
+  company?: string;
 }
 
 export const testimonials: Testimonial[] = [
   { quote: "They shipped a working agent in weeks, not months. The focus on evaluation and safety is what gave us the confidence to put it in front of real users.", role: "Senior Architect" },
-  { quote: "No hype — every claim came with an eval and a dashboard. That's exactly what a small team needs to move fast without breaking things.", role: "Senior Architect" },
-  { quote: "They felt like part of our team. We went from a rough idea to something running in production far quicker than we expected.", role: "Senior Architect" },
-  { quote: "Support that actually resolves issues, at a cost that works for a startup. That combination is genuinely hard to find.", role: "Senior Architect" },
+  { quote: "No hype — every claim came with an eval and a dashboard. That's exactly what a small team needs to move fast without breaking things.", role: "Founder", company: "AI startup" },
+  { quote: "They felt like part of our team. We went from a rough idea to something running in production far quicker than we expected.", role: "Head of Product", company: "seed-stage startup" },
+  { quote: "Support that actually resolves issues, at a cost that works for a startup. That combination is genuinely hard to find.", role: "Operations Lead", company: "growth-stage startup" },
 ];
 
 export interface ProcessStep {
