@@ -11,6 +11,12 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import PageTransition from "@/components/layout/PageTransition";
 
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { GoogleAnalytics } from "@next/third-parties/google";
+
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+
 /**
  * Fonts. Inter (body), Space Grotesk (display headlines), JetBrains Mono (code).
  * Swap in Satoshi / General Sans via a self-hosted @font-face if licensed.
@@ -94,6 +100,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Skip to content
         </a>
+
+        {/* Vercel Web Analytics — auto-tracks page views on Vercel deployments */}
+        <Analytics />
+        {/* Vercel Speed Insights — collects Core Web Vitals / performance metrics */}
+        <SpeedInsights />
+        {/* Google Analytics — only rendered when a measurement ID is configured */}
+        {GA_ID ? <GoogleAnalytics gaId={GA_ID} /> : null}
       </body>
     </html>
   );
