@@ -1,9 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/Button";
-import { Eyebrow, Gradient } from "@/components/ui/Primitives";
+import { Gradient } from "@/components/ui/Primitives";
 import ParticleField from "@/components/providers/ParticleField";
 import { HeroVisual } from "@/components/home/HeroVisual";
 
@@ -25,13 +24,7 @@ export function Hero() {
         <div className="grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr]">
           {/* Copy */}
           <div className="max-w-2xl">
-            <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-              <Eyebrow icon={Sparkles} className="border-white/15 bg-white/5 text-white/70">
-                Enterprise AI, delivered
-              </Eyebrow>
-            </motion.div>
-
-            <h1 className="mt-6 font-display text-4xl font-semibold leading-[1.02] tracking-tight text-balance sm:text-5xl lg:text-6xl">
+            <h1 className="font-display text-4xl font-semibold leading-[1.02] tracking-tight text-balance sm:text-5xl lg:text-6xl">
               <span className="block overflow-hidden">
                 <span className="flex flex-wrap gap-x-4">
                   {words.map((w, i) => (
