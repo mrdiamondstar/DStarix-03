@@ -72,8 +72,6 @@ export function BlogList({ posts }: { posts: BlogPost[] }) {
                 <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">{post.excerpt}</p>
                 <div className="mt-6 flex items-center justify-between gap-3 border-t border-ink-900/[0.06] pt-5 text-xs text-muted">
                   <div className="flex items-center gap-3">
-                    <span className="font-medium text-ink-700">{post.author}</span>
-                    <span aria-hidden>·</span>
                     <span>{formatDate(post.date)}</span>
                     <span aria-hidden>·</span>
                     <span>{post.readTime}</span>

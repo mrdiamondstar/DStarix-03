@@ -59,17 +59,7 @@ export default function BlogArticlePage({ params }: { params: { slug: string } }
               {post.title}
             </h1>
             <p className="mt-5 text-lg leading-relaxed text-white/65">{post.excerpt}</p>
-            <div className="mt-7 flex items-center gap-3">
-              <span className="grid h-11 w-11 place-items-center rounded-full bg-accent-gradient font-display text-sm font-semibold text-white">
-                {post.author.split(" ").map((n) => n[0]).join("").slice(0, 2)}
-              </span>
-              <div className="text-sm leading-tight">
-                <div className="font-medium text-white">{post.author}</div>
-                <div className="text-white/50">
-                  {post.authorRole} · {formatDate(post.date)}
-                </div>
-              </div>
-            </div>
+            <div className="mt-7 text-sm text-white/50">{formatDate(post.date)}</div>
           </div>
         </div>
       </section>

@@ -563,16 +563,15 @@ export const caseStudies: CaseStudy[] = [
 
 export interface Testimonial {
   quote: string;
-  name: string;
   role: string;
   company: string;
 }
 
 export const testimonials: Testimonial[] = [
-  { quote: "They shipped a working agent in weeks, not months. The focus on evaluation and safety is what gave us the confidence to put it in front of real users.", name: "Elena Márquez", role: "Co-founder & CEO", company: "early-stage SaaS" },
-  { quote: "No hype — every claim came with an eval and a dashboard. That's exactly what a small team needs to move fast without breaking things.", name: "David Chen", role: "Founder", company: "AI startup" },
-  { quote: "They felt like part of our team. We went from a rough idea to something running in production far quicker than we expected.", name: "Priya Nair", role: "Head of Product", company: "seed-stage startup" },
-  { quote: "Support that actually resolves issues, at a cost that works for a startup. That combination is genuinely hard to find.", name: "Marcus Feld", role: "Operations Lead", company: "growth-stage startup" },
+  { quote: "They shipped a working agent in weeks, not months. The focus on evaluation and safety is what gave us the confidence to put it in front of real users.", role: "Co-founder & CEO", company: "early-stage SaaS" },
+  { quote: "No hype — every claim came with an eval and a dashboard. That's exactly what a small team needs to move fast without breaking things.", role: "Founder", company: "AI startup" },
+  { quote: "They felt like part of our team. We went from a rough idea to something running in production far quicker than we expected.", role: "Head of Product", company: "seed-stage startup" },
+  { quote: "Support that actually resolves issues, at a cost that works for a startup. That combination is genuinely hard to find.", role: "Operations Lead", company: "growth-stage startup" },
 ];
 
 export interface ProcessStep {
@@ -724,8 +723,6 @@ export interface BlogPost {
   category: string;
   date: string;
   readTime: string;
-  author: string;
-  authorRole: string;
   image: string;
   content: ArticleSection[];
 }
@@ -739,8 +736,6 @@ export const blogPosts: BlogPost[] = [
     category: "Research",
     date: "2026-06-30",
     readTime: "8 min",
-    author: "Elena Márquez",
-    authorRole: "Co-founder & CEO",
     image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=1200&q=80&auto=format&fit=crop",
     content: [
       {
@@ -796,8 +791,6 @@ export const blogPosts: BlogPost[] = [
     category: "Research",
     date: "2026-06-18",
     readTime: "9 min",
-    author: "David Chen",
-    authorRole: "Founder",
     image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&q=80&auto=format&fit=crop",
     content: [
       {
@@ -850,8 +843,6 @@ export const blogPosts: BlogPost[] = [
     category: "Engineering",
     date: "2026-06-05",
     readTime: "8 min",
-    author: "Priya Nair",
-    authorRole: "Head of Product",
     image: "https://images.unsplash.com/photo-1555255707-c07966088b7b?w=1200&q=80&auto=format&fit=crop",
     content: [
       {
@@ -903,8 +894,6 @@ export const blogPosts: BlogPost[] = [
     category: "Engineering",
     date: "2026-05-22",
     readTime: "10 min",
-    author: "Marcus Feld",
-    authorRole: "Operations Lead",
     image: "https://images.unsplash.com/photo-1591453089816-0fbb971b454c?w=1200&q=80&auto=format&fit=crop",
     content: [
       {
@@ -955,8 +944,6 @@ export const blogPosts: BlogPost[] = [
     category: "Fundamentals",
     date: "2026-05-08",
     readTime: "7 min",
-    author: "Elena Márquez",
-    authorRole: "Co-founder & CEO",
     image: "https://images.unsplash.com/photo-1526378722484-bd91ca387e72?w=1200&q=80&auto=format&fit=crop",
     content: [
       {
@@ -1008,8 +995,6 @@ export const blogPosts: BlogPost[] = [
     category: "Engineering",
     date: "2026-04-24",
     readTime: "11 min",
-    author: "David Chen",
-    authorRole: "Founder",
     image: "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=1200&q=80&auto=format&fit=crop",
     content: [
       {
@@ -1147,13 +1132,6 @@ export const timeline = [
   { year: "2023", title: "Agentic era", text: "Built one of the first guardrailed multi-agent systems deployed at scale in a regulated industry." },
   { year: "2025", title: "50+ systems", text: "Crossed 50+ production AI systems shipped across finance, health, retail and manufacturing." },
   { year: "2026", title: "Global delivery", text: "Delivery pods across three continents serving 40M+ requests a day." },
-];
-
-export const leadership = [
-  { name: "Elena Márquez", role: "Co-founder & CEO", bio: "Former ML lead scaling AI in regulated finance." },
-  { name: "David Chen", role: "Co-founder & CTO", bio: "Systems engineer; built inference platforms at hyperscale." },
-  { name: "Priya Nair", role: "VP, AI Research", bio: "Published researcher in retrieval and alignment." },
-  { name: "Marcus Feld", role: "VP, Delivery", bio: "Ran forward-deployed teams shipping AI to the Fortune 100." },
 ];
 
 export const offices = [

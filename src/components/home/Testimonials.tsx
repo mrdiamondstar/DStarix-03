@@ -42,8 +42,7 @@ export function Testimonials() {
               </p>
               <footer className="mt-8">
                 <div className="mx-auto h-12 w-12 rounded-full bg-accent-gradient" />
-                <div className="mt-3 font-semibold text-white">{t.name}</div>
-                <div className="text-sm text-white/55">
+                <div className="mt-3 text-sm font-medium text-white/70">
                   {t.role}, {t.company}
                 </div>
               </footer>

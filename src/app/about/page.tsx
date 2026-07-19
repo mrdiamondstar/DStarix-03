@@ -6,28 +6,13 @@ import { FeatureGrid } from "@/components/shared/FeatureGrid";
 import { StatBand } from "@/components/shared/StatBand";
 import { Section, SectionHeading } from "@/components/ui/Primitives";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/Reveal";
-import { companyValues, timeline, leadership, techStack } from "@/lib/data";
+import { companyValues, timeline, techStack } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "About — DStarix Techno",
   description:
     "We are an applied AI studio that ships production systems, not demos. Meet the team, our story and the principles behind our work.",
 };
-
-const avatarGradients = [
-  "from-electric to-violet",
-  "from-violet to-cyan",
-  "from-cyan to-electric",
-  "from-electric to-cyan",
-];
-
-function initials(name: string) {
-  return name
-    .split(" ")
-    .map((p) => p[0])
-    .slice(0, 2)
-    .join("");
-}
 
 export default function AboutPage() {
   return (
@@ -110,33 +95,6 @@ export default function AboutPage() {
           <div className="mt-12">
             <FeatureGrid features={companyValues} columns={3} />
           </div>
-        </div>
-      </Section>
-
-      {/* Leadership */}
-      <Section className="section-dark">
-        <div className="container">
-          <SectionHeading
-            eyebrow="Leadership"
-            title={<>The people <span className="text-gradient">accountable for outcomes</span></>}
-            lead="Operators and researchers who have built and run AI systems where failure was not an option."
-          />
-          <Stagger className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {leadership.map((person, i) => (
-              <StaggerItem key={person.name}>
-                <div className="glass-dark h-full rounded-3xl p-7 transition-all duration-500 hover:-translate-y-1.5">
-                  <div
-                    className={`grid h-16 w-16 place-items-center rounded-2xl bg-gradient-to-br ${avatarGradients[i % avatarGradients.length]} font-display text-xl font-semibold text-white`}
-                  >
-                    {initials(person.name)}
-                  </div>
-                  <h3 className="mt-5 font-display text-lg font-semibold tracking-tight">{person.name}</h3>
-                  <p className="mt-1 text-sm font-medium text-electric">{person.role}</p>
-                  <p className="mt-3 text-sm leading-relaxed text-white/60">{person.bio}</p>
-                </div>
-              </StaggerItem>
-            ))}
-          </Stagger>
         </div>
       </Section>
 
