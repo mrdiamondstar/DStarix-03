@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { ArrowRight, Github, Linkedin, Twitter, Youtube, Check, Loader2 } from "lucide-react";
+import { ArrowRight, Github, Linkedin, Twitter, Youtube, Check, Loader2, Mail } from "lucide-react";
 import { Logo } from "./Logo";
 import { cn } from "@/lib/utils";
 import { WEB3FORMS_ACCESS_KEY, WEB3FORMS_ENDPOINT } from "@/lib/web3forms";
@@ -125,20 +125,23 @@ export default function Footer() {
             onSubmit={handleSubscribe}
           >
             <div className="flex flex-col gap-3 sm:flex-row">
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                disabled={sent}
-                placeholder="you@company.com"
-                className="h-14 flex-1 rounded-full border border-white/20 bg-white/[0.09] px-6 text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] placeholder:text-white/50 outline-none transition-all focus:border-electric focus:bg-white/[0.12] focus:ring-2 focus:ring-electric/25 disabled:opacity-60"
-              />
+              <div className="relative flex-1">
+                <input
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  disabled={sent}
+                  placeholder="you@company.com"
+                  className="peer h-14 w-full rounded-full border border-white/15 bg-white/[0.06] pl-12 pr-5 text-[15px] text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] placeholder:text-white/45 outline-none transition-all focus:border-electric focus:bg-white/[0.1] focus:ring-2 focus:ring-electric/25 disabled:opacity-60"
+                />
+                <Mail className="pointer-events-none absolute left-5 top-1/2 h-5 w-5 -translate-y-1/2 text-white/40 transition-colors peer-focus:text-electric" />
+              </div>
               <button
                 type="submit"
                 disabled={loading || sent}
                 className={cn(
-                  "group inline-flex h-14 items-center justify-center gap-2 rounded-full px-7 font-medium transition-all disabled:cursor-not-allowed",
+                  "group inline-flex h-14 shrink-0 items-center justify-center gap-2 rounded-full px-8 font-medium transition-all disabled:cursor-not-allowed",
                   sent ? "bg-emerald-500 text-white" : "bg-white text-ink-900 hover:bg-white/90"
                 )}
               >
