@@ -25,7 +25,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "sw
 const space = Space_Grotesk({ subsets: ["latin"], variable: "--font-space", display: "swap" });
 const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono", display: "swap" });
 
-const SITE = "https://dstarix.tech";
+const SITE = "https://dstarix.in";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),

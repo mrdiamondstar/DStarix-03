@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
+import { blogPosts } from "@/lib/data";
 
-const BASE = "https://dstarix.tech";
+const BASE = "https://dstarix.in";
 
 const routes = [
   "", "services", "ai-solutions", "industries", "portfolio", "case-studies",
@@ -11,10 +12,21 @@ const routes = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return routes.map((r) => ({
+  const now = new Date();
+
+  const staticEntries: MetadataRoute.Sitemap = routes.map((r) => ({
     url: `${BASE}/${r}`,
-    lastModified: new Date(),
+    lastModified: now,
     changeFrequency: r === "" || r === "blog" ? "weekly" : "monthly",
     priority: r === "" ? 1 : 0.7,
   }));
+
+  const blogEntries: MetadataRoute.Sitemap = blogPosts.map((p) => ({
+    url: `${BASE}/blog/${p.slug}`,
+    lastModified: new Date(p.date),
+    changeFrequency: "monthly",
+    priority: 0.6,
+  }));
+
+  return [...staticEntries, ...blogEntries];
 }
