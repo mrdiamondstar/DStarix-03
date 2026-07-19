@@ -19,7 +19,7 @@ export function Logo({ className, dark = false }: { className?: string; dark?: b
       className={cn("group inline-flex items-center gap-2.5 leading-none", className)}
     >
       {/* Brand "D" mark — matches the site favicon */}
-      <span className="relative grid h-9 w-9 shrink-0 place-items-center overflow-hidden rounded-xl shadow-glow ring-1 ring-white/10 transition-transform duration-500 group-hover:scale-105">
+      <span className="relative grid h-10 w-10 shrink-0 place-items-center overflow-hidden rounded-xl shadow-glow ring-1 ring-white/10 transition-transform duration-500 group-hover:scale-105">
         <svg viewBox="0 0 32 32" className="h-full w-full" aria-hidden>
           <defs>
             <linearGradient id="dstarix-d-grad" x1="0" y1="0" x2="1" y2="1">
@@ -37,7 +37,7 @@ export function Logo({ className, dark = false }: { className?: string; dark?: b
         </svg>
       </span>
 
-      <span className="inline-flex items-baseline font-display text-xl font-bold tracking-tight transition-transform duration-500 group-hover:scale-[1.02]">
+      <span className="inline-flex items-baseline font-display text-2xl font-bold tracking-tight transition-transform duration-500 group-hover:scale-[1.02]">
         {/* Single gradient clipped across the letter groups for continuity */}
         <span
           className={cn(
@@ -91,7 +91,7 @@ export function Logo({ className, dark = false }: { className?: string; dark?: b
 
       <span
         className={cn(
-          "font-display text-lg font-semibold tracking-tight",
+          "font-display text-xl font-semibold tracking-tight",
           dark ? "text-white/85" : "text-ink-900/80"
         )}
       >
