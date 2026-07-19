@@ -4,7 +4,7 @@ import { blogPosts } from "@/lib/data";
 const BASE = "https://dstarix.in";
 
 const routes = [
-  "", "services", "ai-solutions", "industries", "portfolio", "case-studies",
+  "", "services", "ai-solutions", "industries", "portfolio",
   "about", "careers", "blog", "contact", "pricing", "ai-consulting",
   "ai-development", "ai-automation", "enterprise-ai", "generative-ai",
   "agentic-ai", "rag-solutions", "ai-chatbots", "voice-ai",

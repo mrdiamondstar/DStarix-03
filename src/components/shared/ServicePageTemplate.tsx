@@ -51,7 +51,7 @@ export function ServicePageTemplate(cfg: ServicePageConfig) {
         title={cfg.title}
         highlight={cfg.highlight}
         lead={cfg.lead}
-        secondaryCta={{ label: "See case studies", href: "/case-studies" }}
+        secondaryCta={{ label: "See our work", href: "/portfolio" }}
       />
 
       <div className="container">

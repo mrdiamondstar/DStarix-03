@@ -32,7 +32,7 @@ export default function IndustriesPage() {
         highlight="your industry."
         lead="Regulations, data models and workflows differ in every sector. We bring reference architectures and domain expertise to each — so your AI understands the context it operates in from day one."
         primaryCta={{ label: "Discuss your sector", href: "/contact" }}
-        secondaryCta={{ label: "See case studies", href: "/case-studies" }}
+        secondaryCta={{ label: "See our work", href: "/portfolio" }}
       />
 
       {/* Quick index */}

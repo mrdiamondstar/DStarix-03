@@ -85,8 +85,8 @@ export function Hero() {
               <Button href="/contact" size="lg" withArrow>
                 Start a project
               </Button>
-              <Button href="/case-studies" variant="glass" size="lg">
-                See the results
+              <Button href="/portfolio" variant="glass" size="lg">
+                See our work
               </Button>
             </motion.div>
           </div>

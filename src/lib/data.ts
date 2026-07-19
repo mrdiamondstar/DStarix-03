@@ -765,8 +765,7 @@ export const primaryNav: NavGroup[] = [
       {
         title: "Proof",
         links: [
-          { label: "Portfolio", href: "/portfolio", icon: Boxes, description: "Selected work" },
-          { label: "Case Studies", href: "/case-studies", icon: LineChart, description: "Outcomes & ROI" },
+          { label: "Portfolio", href: "/portfolio", icon: Boxes, description: "What we build" },
           { label: "Industries", href: "/industries", icon: Building2, description: "Where we operate" },
         ],
       },
