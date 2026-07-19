@@ -22,6 +22,7 @@ import {
   Lock,
   GitBranch,
   Boxes,
+  Compass,
   type LucideIcon,
 } from "lucide-react";
 
@@ -29,6 +30,79 @@ import {
    Central content model for DStarix Techno.
    Everything routable / listable lives here so pages stay consistent.
    ===================================================================== */
+
+export interface SolutionCategory {
+  title: string;
+  description: string;
+  icon: LucideIcon;
+}
+
+/**
+ * Portfolio presented as solution categories (capabilities), not completed
+ * client projects — accurate for a growing studio and avoids overstating.
+ */
+export const solutionCategories: SolutionCategory[] = [
+  {
+    title: "Enterprise AI Chatbots",
+    description:
+      "Intelligent conversational assistants powered by Large Language Models that deliver accurate, context-aware responses for customer support, internal knowledge management and business operations.",
+    icon: MessagesSquare,
+  },
+  {
+    title: "AI Agents & Workflow Automation",
+    description:
+      "Autonomous AI agents that automate repetitive business processes, execute multi-step workflows, integrate with business applications and improve operational efficiency.",
+    icon: Workflow,
+  },
+  {
+    title: "Retrieval-Augmented Generation (RAG)",
+    description:
+      "Enterprise knowledge assistants that securely retrieve information from company documents, databases and knowledge bases to provide reliable, citation-backed answers.",
+    icon: BookOpen,
+  },
+  {
+    title: "Intelligent Document Processing",
+    description:
+      "AI-powered systems that extract, classify, summarize and analyze information from invoices, contracts, reports, forms and other business documents.",
+    icon: FileText,
+  },
+  {
+    title: "Custom Generative AI Solutions",
+    description:
+      "Tailor-made AI applications built to solve unique business challenges using modern LLMs, prompt engineering, fine-tuning and enterprise integrations.",
+    icon: Sparkles,
+  },
+  {
+    title: "Voice AI Solutions",
+    description:
+      "Voice-enabled AI assistants capable of real-time speech recognition, natural conversations, voice automation and multilingual interactions.",
+    icon: AudioLines,
+  },
+  {
+    title: "Multi-Agent AI Systems",
+    description:
+      "Collaborative AI agent ecosystems where specialized agents work together to solve complex business tasks, research, planning and decision-making.",
+    icon: Bot,
+  },
+  {
+    title: "AI Integration & API Development",
+    description:
+      "Seamless integration of AI capabilities into existing web applications, mobile apps, CRMs, ERPs and enterprise software using secure APIs.",
+    icon: Braces,
+  },
+  {
+    title: "Private Enterprise AI",
+    description:
+      "Secure, on-premises and private-cloud AI deployments designed for organizations requiring complete control over sensitive data and compliance.",
+    icon: Shield,
+  },
+  {
+    title: "AI Consulting & Strategy",
+    description:
+      "Helping organizations identify AI opportunities, define implementation roadmaps, select the right technologies and successfully adopt AI across their business.",
+    icon: Compass,
+  },
+];
 
 export interface ServiceItem {
   slug: string;

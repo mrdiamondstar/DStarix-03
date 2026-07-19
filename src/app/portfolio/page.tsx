@@ -1,59 +1,52 @@
 import type { Metadata } from "next";
 import { Boxes } from "lucide-react";
 import { SectionHeading } from "@/components/ui/Primitives";
-import { StatBand } from "@/components/shared/StatBand";
 import { PageHero } from "@/components/shared/PageHero";
 import { CTASection } from "@/components/shared/CTASection";
-import { PortfolioGrid } from "@/components/portfolio/PortfolioGrid";
+import { FeatureGrid } from "@/components/shared/FeatureGrid";
+import { solutionCategories } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Portfolio — Selected AI Work | DStarix Techno",
+  title: "Portfolio — AI Solutions We Build | DStarix Techno",
   description:
-    "Production AI systems we've shipped across agentic support, document intelligence, voice, forecasting, private LLMs, RAG, vision and automation — and the numbers they moved.",
+    "The AI solutions DStarix designs and builds — enterprise chatbots, AI agents, RAG knowledge assistants, document intelligence, voice AI, multi-agent systems, private deployments and more.",
 };
 
 export default function PortfolioPage() {
   return (
     <>
       <PageHero
-        eyebrow="Portfolio"
+        eyebrow="Our portfolio"
         icon={Boxes}
-        title="Proof, not"
-        highlight="promises."
-        lead="A selection of AI systems we've taken from whiteboard to production — filter by capability, then open any project to see the outcome it delivered."
+        title="AI solutions we design and"
+        highlight="build"
+        lead="We showcase our expertise through the categories of AI systems we build — production-ready solutions engineered for real business problems, security and long-term maintainability."
         primaryCta={{ label: "Start a project", href: "/contact" }}
-        secondaryCta={{ label: "Read case studies", href: "/case-studies" }}
+        secondaryCta={{ label: "Talk to us", href: "/contact" }}
       />
 
-      {/* Filterable grid */}
+      {/* Solution categories */}
       <section className="relative py-14 sm:py-20">
         <div className="container">
           <SectionHeading
-            eyebrow="Selected work"
+            eyebrow="What we build"
             title={
               <>
-                Systems in production, <span className="text-gradient">outcomes on record</span>
+                Capabilities across the <span className="text-gradient">enterprise AI stack</span>
               </>
             }
-            lead="Every project below is live today. Click a card for the detail behind the metric."
+            lead="From conversational assistants to private, on-prem deployments — each solution is built to integrate cleanly with your existing systems."
           />
           <div className="mt-12">
-            <PortfolioGrid />
+            <FeatureGrid features={solutionCategories} columns={3} />
           </div>
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="relative py-20 sm:py-24 bg-ink-900/[0.02]">
-        <div className="container">
-          <StatBand />
-        </div>
-      </section>
-
       <CTASection
-        title="Your project could be the"
-        highlight="next number here."
-        lead="Bring us the outcome you need. We'll show you the fastest credible path to shipping it in production."
+        title="Have a use case in"
+        highlight="one of these areas?"
+        lead="Tell us the problem you're trying to solve. We'll map the fastest credible path to a production-ready AI solution."
       />
     </>
   );
