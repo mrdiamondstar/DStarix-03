@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { ArrowRight, Github, Linkedin, Twitter, Youtube, Check } from "lucide-react";
+import { ArrowRight, Github, Linkedin, Twitter, Youtube, Check, Loader2 } from "lucide-react";
 import { Logo } from "./Logo";
 import { cn } from "@/lib/utils";
+import { WEB3FORMS_ACCESS_KEY, WEB3FORMS_ENDPOINT } from "@/lib/web3forms";
 
 const columns = [
   {
@@ -63,6 +64,40 @@ const socials = [
 export default function Footer() {
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  async function handleSubscribe(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (!email) return;
+    setLoading(true);
+    setError(null);
+
+    const formData = new FormData();
+    formData.append("access_key", WEB3FORMS_ACCESS_KEY);
+    formData.append("subject", "New newsletter subscription — Dstarix website");
+    formData.append("email", email);
+    formData.append("from_name", "Dstarix newsletter");
+
+    try {
+      const res = await fetch(WEB3FORMS_ENDPOINT, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: formData,
+      });
+      const result = await res.json();
+      if (result.success) {
+        setSent(true);
+        setEmail("");
+      } else {
+        setError(result.message || "Something went wrong. Please try again.");
+      }
+    } catch {
+      setError("Network error. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  }
 
   return (
     <footer className="section-dark relative overflow-hidden">
@@ -87,10 +122,7 @@ export default function Footer() {
           <form
             className="w-full"
             onClick={(e) => e.stopPropagation()}
-            onSubmit={(e) => {
-              e.preventDefault();
-              if (email) setSent(true);
-            }}
+            onSubmit={handleSubscribe}
           >
             <div className="flex flex-col gap-3 sm:flex-row">
               <input
@@ -98,19 +130,25 @@ export default function Footer() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                disabled={sent}
                 placeholder="you@company.com"
-                className="h-14 flex-1 rounded-full border border-white/20 bg-white/[0.09] px-6 text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] placeholder:text-white/50 outline-none transition-all focus:border-electric focus:bg-white/[0.12] focus:ring-2 focus:ring-electric/25"
+                className="h-14 flex-1 rounded-full border border-white/20 bg-white/[0.09] px-6 text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] placeholder:text-white/50 outline-none transition-all focus:border-electric focus:bg-white/[0.12] focus:ring-2 focus:ring-electric/25 disabled:opacity-60"
               />
               <button
                 type="submit"
+                disabled={loading || sent}
                 className={cn(
-                  "group inline-flex h-14 items-center justify-center gap-2 rounded-full px-7 font-medium transition-all",
+                  "group inline-flex h-14 items-center justify-center gap-2 rounded-full px-7 font-medium transition-all disabled:cursor-not-allowed",
                   sent ? "bg-emerald-500 text-white" : "bg-white text-ink-900 hover:bg-white/90"
                 )}
               >
                 {sent ? (
                   <>
                     Subscribed <Check className="h-4 w-4" />
+                  </>
+                ) : loading ? (
+                  <>
+                    Subscribing <Loader2 className="h-4 w-4 animate-spin" />
                   </>
                 ) : (
                   <>
@@ -119,6 +157,7 @@ export default function Footer() {
                 )}
               </button>
             </div>
+            {error && <p className="mt-3 text-sm text-red-400">{error}</p>}
           </form>
         </div>
 

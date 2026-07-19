@@ -1137,8 +1137,8 @@ export const timeline = [
   { year: "2019", title: "Founded", text: "Started by ML researchers and product engineers frustrated by AI that never left the demo." },
   { year: "2021", title: "First enterprise platform", text: "Shipped our first production AI platform for a Fortune 500 financial institution." },
   { year: "2023", title: "Agentic era", text: "Built one of the first guardrailed multi-agent systems deployed at scale in a regulated industry." },
-  { year: "2025", title: "50+ systems", text: "Crossed 50+ production AI systems shipped across finance, health, retail and manufacturing." },
-  { year: "2026", title: "Global delivery", text: "Delivery pods across three continents serving 40M+ requests a day." },
+  { year: "2025", title: "12+ systems", text: "Crossed 12+ production AI systems shipped across finance, health, retail and manufacturing." },
+  { year: "2026", title: "Global delivery", text: "Delivery pods serving 1M+ requests a day." },
 ];
 
 export const offices = [

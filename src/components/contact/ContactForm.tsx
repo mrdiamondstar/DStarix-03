@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { CheckCircle2, Send, Loader2, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { WEB3FORMS_ACCESS_KEY, WEB3FORMS_ENDPOINT } from "@/lib/web3forms";
 
 const interests = [
   "Start a pilot",
@@ -17,8 +18,6 @@ const fieldClass =
   "peer w-full rounded-2xl border border-ink-900/10 bg-white/70 px-4 pb-2.5 pt-6 text-ink-900 shadow-soft outline-none backdrop-blur transition-all duration-300 placeholder-transparent focus:border-electric focus:ring-4 focus:ring-electric/15";
 const labelClass =
   "pointer-events-none absolute left-4 top-4 text-sm text-muted transition-all duration-200 peer-focus:top-2 peer-focus:text-xs peer-focus:text-electric peer-[:not(:placeholder-shown)]:top-2 peer-[:not(:placeholder-shown)]:text-xs";
-
-const WEB3FORMS_ACCESS_KEY = "fb80d32c-042c-4758-b832-7d09b8b321ac";
 
 /** Premium contact form with floating labels, wired to Web3Forms. */
 export function ContactForm() {
@@ -37,7 +36,7 @@ export function ContactForm() {
     formData.append("subject", "New inquiry from Dstarix website");
 
     try {
-      const res = await fetch("https://api.web3forms.com/submit", {
+      const res = await fetch(WEB3FORMS_ENDPOINT, {
         method: "POST",
         headers: { Accept: "application/json" },
         body: formData,
