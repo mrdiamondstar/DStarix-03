@@ -23,7 +23,9 @@ export function Counter({
 }) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-40px" });
-  const [val, setVal] = useState(from);
+  // Start at the final value so server-rendered HTML (and crawlers / no-JS
+  // visitors) show the real number instead of the pre-animation "0".
+  const [val, setVal] = useState(to);
 
   useEffect(() => {
     if (!inView) return;
