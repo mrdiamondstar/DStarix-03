@@ -59,7 +59,9 @@ export default function BlogArticlePage({ params }: { params: { slug: string } }
               {post.title}
             </h1>
             <p className="mt-5 text-lg leading-relaxed text-white/65">{post.excerpt}</p>
-            <div className="mt-7 text-sm text-white/50">{formatDate(post.date)}</div>
+            <div className="mt-7 text-sm text-white/50">
+              <span className="font-medium text-white/80">{post.authorRole}</span> · {formatDate(post.date)}
+            </div>
           </div>
         </div>
       </section>

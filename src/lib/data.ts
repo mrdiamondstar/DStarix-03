@@ -723,6 +723,7 @@ export interface BlogPost {
   category: string;
   date: string;
   readTime: string;
+  authorRole: string;
   image: string;
   content: ArticleSection[];
 }
@@ -736,6 +737,7 @@ export const blogPosts: BlogPost[] = [
     category: "Research",
     date: "2026-06-30",
     readTime: "8 min",
+    authorRole: "Senior AI Engineer",
     image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=1200&q=80&auto=format&fit=crop",
     content: [
       {
@@ -791,6 +793,7 @@ export const blogPosts: BlogPost[] = [
     category: "Research",
     date: "2026-06-18",
     readTime: "9 min",
+    authorRole: "ML Research Engineer",
     image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&q=80&auto=format&fit=crop",
     content: [
       {
@@ -843,6 +846,7 @@ export const blogPosts: BlogPost[] = [
     category: "Engineering",
     date: "2026-06-05",
     readTime: "8 min",
+    authorRole: "Senior ML Engineer",
     image: "https://images.unsplash.com/photo-1555255707-c07966088b7b?w=1200&q=80&auto=format&fit=crop",
     content: [
       {
@@ -894,6 +898,7 @@ export const blogPosts: BlogPost[] = [
     category: "Engineering",
     date: "2026-05-22",
     readTime: "10 min",
+    authorRole: "AI Engineer",
     image: "https://images.unsplash.com/photo-1591453089816-0fbb971b454c?w=1200&q=80&auto=format&fit=crop",
     content: [
       {
@@ -944,6 +949,7 @@ export const blogPosts: BlogPost[] = [
     category: "Fundamentals",
     date: "2026-05-08",
     readTime: "7 min",
+    authorRole: "Senior AI Engineer",
     image: "https://images.unsplash.com/photo-1526378722484-bd91ca387e72?w=1200&q=80&auto=format&fit=crop",
     content: [
       {
@@ -995,6 +1001,7 @@ export const blogPosts: BlogPost[] = [
     category: "Engineering",
     date: "2026-04-24",
     readTime: "11 min",
+    authorRole: "ML Engineer",
     image: "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=1200&q=80&auto=format&fit=crop",
     content: [
       {

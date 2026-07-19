@@ -69,6 +69,8 @@ export default function BlogPage() {
                 </h2>
                 <p className="mt-4 text-lg leading-relaxed text-muted">{featured.excerpt}</p>
                 <div className="mt-6 flex items-center gap-3 text-sm text-muted">
+                  <span className="font-medium text-ink-700">{featured.authorRole}</span>
+                  <span aria-hidden>·</span>
                   <span>{formatDate(featured.date)}</span>
                   <span aria-hidden>·</span>
                   <span>{featured.readTime}</span>
