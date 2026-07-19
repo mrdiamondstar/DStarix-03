@@ -22,22 +22,17 @@ export function Logo({ className, dark = false }: { className?: string; dark?: b
       <span className="relative grid h-9 w-9 shrink-0 place-items-center overflow-hidden rounded-xl shadow-glow ring-1 ring-white/10 transition-transform duration-500 group-hover:scale-105">
         <svg viewBox="0 0 32 32" className="h-full w-full" aria-hidden>
           <defs>
-            <linearGradient id="dstarix-d-fill" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stopColor="#60a5fa" />
-              <stop offset="0.55" stopColor="#3b82f6" />
-              <stop offset="1" stopColor="#2563eb" />
-            </linearGradient>
-            <linearGradient id="dstarix-d-sheen" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stopColor="#ffffff" stopOpacity="0.35" />
-              <stop offset="0.5" stopColor="#ffffff" stopOpacity="0" />
+            <linearGradient id="dstarix-d-grad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stopColor="#17b6d4" />
+              <stop offset="0.5" stopColor="#1f6fc4" />
+              <stop offset="1" stopColor="#173f86" />
             </linearGradient>
           </defs>
-          <rect width="32" height="32" rx="8" fill="url(#dstarix-d-fill)" />
-          <rect width="32" height="32" rx="8" fill="url(#dstarix-d-sheen)" />
+          <rect width="32" height="32" rx="8" fill="#ffffff" />
           <path
-            fill="#fff"
+            fill="url(#dstarix-d-grad)"
             fillRule="evenodd"
-            d="M9 7H17A9 9 0 0 1 17 25H9ZM13 11H16A5 5 0 0 1 16 21H13Z"
+            d="M8 6H16.5A10 10 0 0 1 16.5 26H8ZM12.5 10.5H15.5A5.5 5.5 0 0 1 15.5 21.5H12.5Z"
           />
         </svg>
       </span>
