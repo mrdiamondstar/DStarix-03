@@ -1,10 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
 import { Button } from "@/components/ui/Button";
 import { Gradient } from "@/components/ui/Primitives";
-import ParticleField from "@/components/providers/ParticleField";
 import { HeroVisual } from "@/components/home/HeroVisual";
+
+// Decorative canvas — deferred so it never blocks first paint / hydration.
+const ParticleField = dynamic(() => import("@/components/providers/ParticleField"), { ssr: false });
 
 const words = ["Build", "Enterprise", "AI", "Systems", "That"];
 
@@ -24,38 +27,20 @@ export function Hero() {
         <div className="grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr]">
           {/* Copy */}
           <div className="max-w-2xl">
+            {/* Rendered statically (no entrance animation) so this — the LCP
+                element — paints immediately on first load. */}
             <h1 className="font-display text-4xl font-semibold leading-[1.02] tracking-tight text-balance sm:text-5xl lg:text-6xl">
-              <span className="block overflow-hidden">
-                <span className="flex flex-wrap gap-x-4">
-                  {words.map((w, i) => (
-                    <motion.span
-                      key={w}
-                      initial={{ y: "110%" }}
-                      animate={{ y: 0 }}
-                      transition={{ delay: 0.1 + i * 0.08, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                      className="inline-block"
-                    >
-                      {w}
-                    </motion.span>
-                  ))}
-                </span>
+              <span className="flex flex-wrap gap-x-4">
+                {words.map((w) => (
+                  <span key={w} className="inline-block">
+                    {w}
+                  </span>
+                ))}
               </span>
-              <motion.span
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5, duration: 0.8 }}
-                className="mt-1 block"
-              >
+              <span className="mt-1 block">
                 <Gradient>Actually Deliver</Gradient>
-              </motion.span>
-              <motion.span
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6, duration: 0.8 }}
-                className="block text-white/90"
-              >
-                Business Value.
-              </motion.span>
+              </span>
+              <span className="block text-white/90">Business Value.</span>
             </h1>
 
             <motion.p

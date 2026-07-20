@@ -3,9 +3,7 @@ import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
 import SmoothScroll from "@/components/providers/SmoothScroll";
-import Cursor from "@/components/providers/Cursor";
-import ScrollProgress from "@/components/providers/ScrollProgress";
-import LoadingScreen from "@/components/providers/LoadingScreen";
+import DeferredChrome from "@/components/providers/DeferredChrome";
 import AmbientBackground from "@/components/providers/AmbientBackground";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -81,11 +79,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <LoadingScreen />
         <AmbientBackground />
         <div className="noise" aria-hidden />
-        <ScrollProgress />
-        <Cursor />
+        <DeferredChrome />
         <SmoothScroll>
           <Navbar />
           <PageTransition>
